@@ -15,7 +15,7 @@
 
 
   <!-- Styles  -->
-  <link href="/css/carousel.css" rel="stylesheet">
+  <!-- <link href="/css/carousel.css" rel="stylesheet"> -->
 
   <title>Tienda Online</title>
 </head>
@@ -36,7 +36,7 @@
               <a class="nav-link active" aria-current="page" href="#">Inicio</a>
             </li>
             <li class="nav-item">
-              <a id="totalItems" type="button" class="btn btn-primary">
+              <button id="totalItems" type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right" title="Finalizar compra">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4"
                   viewBox="0 0 16 16">
                   <path
@@ -44,7 +44,11 @@
                   </path>
                 </svg>
                 0
-              </a>
+              </button>
+              <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right"
+                title="hola que tal">
+                Tooltip on right
+              </button> -->
             </li>
           </ul>
         </div>
@@ -106,6 +110,12 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
     crossorigin="anonymous"></script>
+
+  <!-- customs scripts  -->
+  <script>
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+  </script>
 </body>
 
 </html>

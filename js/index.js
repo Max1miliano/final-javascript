@@ -3,64 +3,64 @@ const container = document.getElementById('productList')
 
 // Obtengo los datos del catalogo de productos y muestro una card por cada uno
 fetch('https://fakestoreapi.com/products')
-.then(res=>res.json())
-.then(productos=>{
-    productos.forEach(card => {
-        const div = document.createElement('div')
-        div.className = "card"
-        div.style = "width: 18rem;"
-    
-        const imgCard = document.createElement('img')
-        imgCard.src = `${card.image}`
-    
-        const cardBody = document.createElement('div')
-        cardBody.className = "card-body"
-        cardBody.innerHTML = `<h5 class="card-title">${card.title}</h5> <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>`
-    
-        const button = document.createElement('button')
-        button.className = "btn btn-primary"
-        button.id = "addToCart"
-        button.innerText = "Agregar"
-        button.addEventListener("click", () => {
-            agregarAlCarrito(card)
-        })
-    
-    
-        div.appendChild(imgCard)
-        div.appendChild(cardBody)
-        cardBody.appendChild(button)
-        container.appendChild(div)
-    });
+    .then(res => res.json())
+    .then(productos => {
+        productos.forEach(card => {
+            const div = document.createElement('div')
+            div.className = "card"
+            div.style = "width: 18rem;"
 
-    // traer una sola card 
-    // const div = document.createElement('div')
-    // div.className = "card"
-    // div.style = "width: 18rem;"
+            const imgCard = document.createElement('img')
+            imgCard.src = `${card.image}`
 
-    // const imgCard = document.createElement('img')
-    // imgCard.src = `${card[0].image}`
+            const cardBody = document.createElement('div')
+            cardBody.className = "card-body"
+            cardBody.innerHTML = `<h5 class="card-title">${card.title}</h5> <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>`
 
-    // const cardBody = document.createElement('div')
-    // cardBody.className = "card-body"
-    // cardBody.innerHTML = `<h5 class="card-title">${card.title}</h5> <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>`
-
-    // const button = document.createElement('button')
-    // button.className = "btn btn-primary"
-    // button.id = "addToCart"
-    // button.innerText = "Agregar"
-    // button.addEventListener("click", agregarAlCarrito)
+            const button = document.createElement('button')
+            button.className = "btn btn-primary"
+            button.id = "addToCart"
+            button.innerText = "Agregar"
+            button.addEventListener("click", () => {
+                agregarAlCarrito(card)
+            })
 
 
-    // div.appendChild(imgCard)
-    // div.appendChild(cardBody)
-    // cardBody.appendChild(button)
-    // container.appendChild(div)
-})
+            div.appendChild(imgCard)
+            div.appendChild(cardBody)
+            cardBody.appendChild(button)
+            container.appendChild(div)
 
 
+        });
+    })
+
+localStorage.clear() 
 function agregarAlCarrito(card) {
-    console.log('Se agrega el producto: ' + card.title)
-}
 
-// Lo mejor sería crear un objeto card que ya contenga la funcion que me agregue elementos al carrito
+    let listaDeId = localStorage.getItem("listaId")
+
+    let totalDeIds = []
+
+    if(listaDeId === null) {
+        // localStorage.setItem("listaId", [])
+        // listaDeId = localStorage.getItem("listaId")
+    } else {
+        totalDeIds = listaDeId.split(",")
+    }
+
+    let listId = localStorage.getItem("listaId") 
+
+    totalDeIds.push(card.id)
+
+    localStorage.setItem("listaId", totalDeIds)
+
+    console.log(totalDeIds)
+
+    // console.log(listId.split(","))
+
+    const numeroCarrito = document.getElementById('totalItems')
+    numeroCarrito.innerText = totalDeIds.length;
+
+}
 
