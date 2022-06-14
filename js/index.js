@@ -35,6 +35,8 @@ fetch('https://fakestoreapi.com/products')
         });
     })
 
+
+
 localStorage.clear() 
 function agregarAlCarrito(card) {
 
@@ -48,14 +50,9 @@ function agregarAlCarrito(card) {
     } else {
         totalDeIds = listaDeId.split(",")
     }
-
-
     totalDeIds.push(card.id)
 
     localStorage.setItem("listaId", totalDeIds)
-
-   
-
 
     const numeroCarrito = document.getElementById('totalItems')
     numeroCarrito.innerText = totalDeIds.length;
@@ -73,7 +70,6 @@ let form = document.getElementById('loginForm')
 let button = document.getElementById('submitButton')
 let inputEmail = document.getElementById('floatingInputValue').value
 
-console.log(inputEmail);
 
 
 
@@ -98,3 +94,28 @@ checkoutOn.addEventListener("click",() => {
     
    localStorage.setItem("email", inputEmail)
 })
+
+fetch('https://fakestoreapi.com/products/categories')
+            .then(res=>res.json())
+            .then(categorias=>console.log(categorias))
+
+
+let electronica = document.getElementsByClassName('electronica')
+let joyeria = document.getElementById('joyeria')
+let ropaHombre = document.getElementById('ropaHombre')
+let ropaMujer = document.getElementById('ropaMujer')
+
+let categoriaSeleccionada = document.getElementsByClassName('nav-link')
+
+switch (categoriaSeleccionada) {
+    case electronica:
+        console.log('presione electronica')
+        break;
+        case joyeria:
+            console.log('presione joyeria')
+            break;
+    default:
+        break;
+}
+
+console.log(categoriaSeleccionada)
