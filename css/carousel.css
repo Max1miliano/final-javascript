@@ -8,6 +8,10 @@ body {
   color: #5a5a5a;
 }
 
+.card {
+  height: max-content;
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -79,4 +83,47 @@ body {
   .featurette-heading {
     margin-top: 7rem;
   }
+}
+
+
+/* CUSTOM FORM  */
+.customForm {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 50%;
+  gap: 5px;
+}
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.initialMain {
+  display: none;
+}
+
+#productList {
+  margin: 0 auto;
+  gap: 3rem;
+}
+
+#checkoutSection {
+  display: none;
 }

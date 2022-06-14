@@ -49,18 +49,52 @@ function agregarAlCarrito(card) {
         totalDeIds = listaDeId.split(",")
     }
 
-    let listId = localStorage.getItem("listaId") 
 
     totalDeIds.push(card.id)
 
     localStorage.setItem("listaId", totalDeIds)
 
-    console.log(totalDeIds)
+   
 
-    // console.log(listId.split(","))
 
     const numeroCarrito = document.getElementById('totalItems')
     numeroCarrito.innerText = totalDeIds.length;
 
+    let cartButton = document.getElementById('totalItems')
+    cartButton.title = localStorage.getItem('listaId')
+    console.log(numeroCarrito)
+
 }
 
+// SCRIPT PARA LOGIN
+
+let main = document.getElementById('firstMain')
+let form = document.getElementById('loginForm')
+let button = document.getElementById('submitButton')
+let inputEmail = document.getElementById('floatingInputValue').value
+
+console.log(inputEmail);
+
+
+
+localStorage.setItem("email", 'coder@house.com')
+localStorage.setItem("contraseña", 'coderhouse')
+
+
+button.addEventListener("click",() => {
+    main.style.display = 'block'
+    form.style.display = 'none'
+    
+   localStorage.setItem("email", inputEmail)
+})
+
+let checkoutOn = document.getElementById('totalItems')
+let checkoutSection = document.getElementById('checkoutSection')
+
+checkoutOn.addEventListener("click",() => {
+    main.style.display = 'none'
+    form.style.display = 'none'
+    checkoutSection.style.display = 'block'
+    
+   localStorage.setItem("email", inputEmail)
+})
