@@ -1,23 +1,19 @@
-// Creo el contenedor para agregar cada card
 let container = document.getElementById('productList')
-let contenidoDeModal = document.getElementById('contenidoDeModal')
 
-
-// ME PIDO DATOS DE UNA API
-fetch('https://fakestoreapi.com/products')
-    .then(res => res.json())
-    .then(productos => {
-        productos.forEach(card => {
+fetch('https://fakestoreapi.com/products/category/jewelery')
+    .then(res=>res.json())
+    .then(categoriaJoyeria=>
+        categoriaJoyeria.forEach(product => {
             let div = document.createElement('div')
             div.className = "card"
             div.style = "width: 18rem;"
 
             let imgCard = document.createElement('img')
-            imgCard.src = `${card.image}`
+            imgCard.src = `${product.image}`
 
             let cardBody = document.createElement('div')
             cardBody.className = "card-body"
-            cardBody.innerHTML = `<h5 class="card-title">${card.title}</h5> <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>`
+            cardBody.innerHTML = `<h5 class="card-title">${product.title}</h5> <p class="card-text">${product.description}</p>`
 
             let button = document.createElement('button')
             button.className = "btn btn-primary"
@@ -32,12 +28,11 @@ fetch('https://fakestoreapi.com/products')
             div.appendChild(cardBody)
             cardBody.appendChild(button)
             container.appendChild(div)
-        });
-    })
 
-localStorage.clear() 
-// USO DE FUNCIONES 
-function agregarAlCarrito(card) {
+
+        } ))
+
+function agregarAlCarrito(product) {
 
     let listaDeId = localStorage.getItem("listaId")
 
@@ -47,7 +42,7 @@ function agregarAlCarrito(card) {
     // SINTAXIS AVANZADA 
     listaDeId === null ? true :  totalDeIds = listaDeId.split(",")
 
-    totalDeIds.push(card.id)
+    totalDeIds.push(product.id)
 
     localStorage.setItem("listaId", totalDeIds)
 
@@ -64,9 +59,4 @@ function agregarAlCarrito(card) {
         duration: 3000
         
         }).showToast();
-
-    let totalPrice = []
-    totalPrice.push(card.price)
-
-    contenidoDeModal.append(totalPrice)
 }

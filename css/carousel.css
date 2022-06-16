@@ -120,9 +120,7 @@ body {
   border-top-right-radius: 0;
 }
 
-.initialMain {
-  display: none;
-}
+
 
 #productList {
   margin: 0 auto;
@@ -131,4 +129,9 @@ body {
 
 #checkoutSection {
   display: none;
+}
+
+.imagenBody {
+  width: 100%;
+  border-radius: 5px;
 }
