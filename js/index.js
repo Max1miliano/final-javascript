@@ -35,7 +35,6 @@ fetch('https://fakestoreapi.com/products')
         });
     })
 
-localStorage.clear() 
 // USO DE FUNCIONES 
 function agregarAlCarrito(card) {
 
